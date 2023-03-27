@@ -1,0 +1,36 @@
+{
+    "builders": [
+      {
+        "commit": true,
+        "image": "jfusterm/ansible",
+        "type": "docker"
+        
+      }
+    ],
+    "post-processors": [
+      [
+        {
+          "repository": "tayyab26/wp-packer",
+          "tags": [
+            "4.5"
+          ],
+          "type": "docker-tag"
+        },
+        {
+          "login": "true",
+          "login_password": "44xrRD394*fKn-i",
+          "login_username": "tayyab26",
+          "type": "docker-push"
+        }
+      ]
+    ],
+    "provisioners": [
+      {
+        "playbook_dir": "ansible",
+        "playbook_file": "ansible/wordpress.yml",
+        "type": "ansible-local",
+        "extra_arguments": [ "--become" ]
+      }
+    ]
+  }
+  

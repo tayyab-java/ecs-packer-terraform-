@@ -1,0 +1,11 @@
+---
+- name: Wordpress | Installation
+  hosts: localhost
+  become: true
+  
+
+  roles:
+    - supervisor
+    - php-fpm
+    - nginx
+    - wordpress

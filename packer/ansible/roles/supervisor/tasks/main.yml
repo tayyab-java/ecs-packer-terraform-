@@ -1,0 +1,13 @@
+---
+- name: Supervisor | Installation
+  become: true
+  apk: 
+     name=supervisor 
+     state=present 
+     update_cache=yes
+  
+
+- name: Supervisor | Setting config file supervisord.conf
+  template: 
+     src=supervisord.conf 
+     dest=/etc/supervisord.conf
